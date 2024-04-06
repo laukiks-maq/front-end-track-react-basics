@@ -1,4 +1,4 @@
-// Placeholder for the HeaderContainer component
+// HeaderContainer Component
 
 import React from "react";
 import images2x from "../../assets/images/images@2x.png";
