@@ -2,7 +2,6 @@
 
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import Spinner from "../Common/Spinner";
 import ServicesCard from "../Common/ServicesCard";
 
 const DiscoverAvailableServicesContainer = () => {
@@ -13,42 +12,46 @@ const DiscoverAvailableServicesContainer = () => {
   // state varible islaoding to check if the data is loaded or not
   const [isLoading, setIsLoading] = useState(true);
 
-  const [text, setText] = useState({
-    monthText: "",
-    dayText: "",
-    yearText: "",
-  });
+  // Different state variables to store the data fetched from the api
+  const [dayText, setDayText] = useState("");
+  const [monthText, setMonthText] = useState("");
+  const [yearText, setYearText] = useState("");
 
   const fetch = async () => {
-    // setIsLoading(true);
-    try {
-      // add 3 secs wait time to show the spinner
-      await new Promise((resolve) => setTimeout(resolve, 3000));
+    setIsLoading(true);
 
-      // fetch data from the api
-      const dateData = await axios.get(
-        `http://numbersapi.com/${date.getDate()}`
-      );
-      const monthData = await axios.get(
-        `http://numbersapi.com/${date.getMonth()}`
-      );
-      const yearData = await axios.get(
-        `http://numbersapi.com/${date.getFullYear()}`
-      );
+    // add 3 secs wait time to show the spinner
+    await new Promise((resolve) => setTimeout(resolve, 3000));
 
-      const dt = dateData.data;
-      const mt = monthData.data;
-      const yt = yearData.data;
-      setText({ dayText: dt, monthText: mt, yearText: yt });
-      setIsLoading(false);
-    } catch (error) {
-      const dt = "Error while retriving data.";
-      const mt = "Error while retriving data.";
-      const yt = "Error while retriving data.";
-      setText({ dayText: dt, monthText: mt, yearText: yt });
-      setIsLoading(false);
-      console.log("Error");
-    }
+    // fetch data from the api
+    await axios
+      .get(`http://numbersapi.com/${date.getDate()}`)
+      .then((response) => {
+        setDayText(response.data);
+      })
+      .catch((error) => {
+        setDayText("Error while retriving data.");
+      });
+
+    await axios
+      .get(`http://numbersapi.com/${date.getMonth()}`)
+      .then((response) => {
+        setMonthText(response.data);
+      })
+      .catch((error) => {
+        setMonthText("Error while retriving data.");
+      });
+
+    await axios
+      .get(`http://numbersapi.com/${date.getFullYear()}`)
+      .then((response) => {
+        setYearText(response.data);
+      })
+      .catch((error) => {
+        setYearText("Error while retriving data.");
+      });
+
+    setIsLoading(false);
   };
 
   useEffect(() => {
@@ -62,7 +65,8 @@ const DiscoverAvailableServicesContainer = () => {
       <div
         className="row rect40"
         style={{
-          margin: "19px",
+          width: "100%",
+          margin: "30px 19px 30px",
           backgroundSize: "cover",
           padding: "30px 26px",
           borderRadius: "25px",
@@ -73,21 +77,21 @@ const DiscoverAvailableServicesContainer = () => {
           isLoading={isLoading}
           title={date.getDate()}
           subtitle="Today's DAY"
-          desc={text.dayText}
+          desc={dayText}
         />
 
         <ServicesCard
           isLoading={isLoading}
           title={date.getMonth()}
           subtitle="Today's Month"
-          desc={text.monthText}
+          desc={monthText}
         />
 
         <ServicesCard
           isLoading={isLoading}
           title={date.getFullYear()}
           subtitle="Today's YEAR"
-          desc={text.yearText}
+          desc={yearText}
         />
       </div>
     </>

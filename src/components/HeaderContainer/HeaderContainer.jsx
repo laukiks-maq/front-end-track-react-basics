@@ -26,66 +26,36 @@ const HeaderContainer = () => {
               >
                 <span class="navbar-toggler-icon"></span>
               </button>
-              <a
-                class="nav-link"
-                style={{ color: "white !important" }}
-                href="#"
-              >
-                <img src={Group51} />
-              </a>
               <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0 gap-1">
-                  <li
-                    class="nav-item"
-                    style={{ color: "white !important", fontSize: "14px" }}
-                  >
-                    <a
-                      class="nav-link"
-                      style={{ color: "white !important" }}
-                      href="#"
-                    >
+                <ul class="navbar-nav mx-4 mb-2 mb-lg-0 gap-1">
+                  <li class="nav-item">
+                    <a class="nav-link link-light" href="#">
+                      <img src={Group51} />
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link link-light fw-bold" href="#">
                       Home
                     </a>
                   </li>
-                  <li
-                    class="nav-item"
-                    style={{ color: "white !important", fontSize: "14px" }}
-                  >
-                    <a
-                      class="nav-link"
-                      style={{ color: "white !important" }}
-                      href="#"
-                    >
+                  <li class="nav-item">
+                    <a class="nav-link link-light" href="#">
                       About Us
                     </a>
                   </li>
-                  <li
-                    class="nav-item"
-                    style={{ color: "white !important", fontSize: "14px" }}
-                  >
-                    <a
-                      class="nav-link"
-                      style={{ color: "white !important" }}
-                      href="#"
-                    >
+                  <li class="nav-item">
+                    <a class="nav-link link-light" href="#">
                       Services
                     </a>
                   </li>
-                  <li
-                    class="nav-item"
-                    style={{ color: "white !important", fontSize: "14px" }}
-                  >
-                    <a
-                      class="nav-link"
-                      style={{ color: "white !important" }}
-                      href="#"
-                    >
+                  <li class="nav-item">
+                    <a class="nav-link link-light" href="#">
                       Contact Us
                     </a>
                   </li>
                 </ul>
-                <form class="d-flex mx-auto">
-                  <div class="input-group" style={{ width: "85%" }}>
+                <form class="d-flex mx-auto mt-2">
+                  <div class="input-group" style={{ width: "20vw" }}>
                     <input
                       type="text"
                       class="form-control"
@@ -98,6 +68,21 @@ const HeaderContainer = () => {
                     <button
                       class=""
                       type="submit"
+                      // open bing search result of input text in new tab
+                      // if text is blank, prompt type something to search
+                      onClick={(e) => {
+                        e.preventDefault();
+                        if (document.getElementById("search").value === "") {
+                          alert("Type something to search");
+                          return;
+                        }
+                        window.open(
+                          `https://www.bing.com/search?q=${
+                            document.getElementById("search").value
+                          }`,
+                          "_blank"
+                        );
+                      }}
                       id="search-icon"
                       style={{
                         backgroundColor: "white",
@@ -140,10 +125,17 @@ const HeaderContainer = () => {
                   </div>
                   <select
                     id="person-select"
-                    style={{ width: "100px", borderRadius: "10px" }}
+                    style={{
+                      width: "100px",
+                      borderRadius: "10px",
+                      color: "rgb(136, 94, 240)",
+                      border: "1px solid rgb(136, 94, 240)",
+                      paddingLeft: "8px",
+                      fontWeight: "bold",
+                    }}
                   >
                     <option class="changeImage" value="images@2x">
-                      Daniel
+                      Laukik
                     </option>
                   </select>
                 </div>

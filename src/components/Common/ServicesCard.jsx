@@ -6,7 +6,7 @@ import PropTypes from "prop-types";
 
 const ServicesCard = ({ isLoading, title, subtitle, desc }) => {
   return (
-    <div className="col-md-3 bg-white rounded-3 mt-4 mb-4 pl-3 detail-card">
+    <div className="col-md-3 bg-white rounded-3 m-1 px-4 py-4 detail-card">
       <h1
         id="day"
         className="display-4"
