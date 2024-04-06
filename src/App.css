@@ -200,14 +200,13 @@ footer {
   top: 50%;
   left: 50%;
   transform: translate(-50%, 0%);
-  background-color: #f2f2f2;
   color: white;
   padding: 20px;
   width: 100%;
   max-width: 100%;
   bottom: 0px;
   border-radius: 0px 0px 10px 10px;
-  opacity: 0.72;
+  background: rgba(242, 242, 242, 0.72);
 }
 
 /* Media query for when screen size is md */
@@ -277,15 +276,14 @@ footer {
   }
 }
 
-.ot .btn-inside-overlay {
-  border: 1px solid white;
-  padding: 8px 16px;
+.btn-inside-overlay {
+  border: none;
+  padding: 8px 32px;
   color: white;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  background: #885ef0;
-  border-radius: 3px;
-  opacity: 1;
+  background: rgba(136, 94, 240, 1);
+  border-radius: 4px;
 }
 
 .btn-bd-primary {
