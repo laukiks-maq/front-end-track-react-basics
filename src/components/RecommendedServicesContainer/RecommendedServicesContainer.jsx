@@ -3,6 +3,7 @@
 import React from "react";
 import image1 from "../../assets/images/image1.png";
 import image2 from "../../assets/images/image2.png";
+import Button from "../Common/Button";
 
 const RecommendedServicesContainer = () => {
   return (
@@ -37,7 +38,13 @@ const RecommendedServicesContainer = () => {
                     <p className="fp">
                       Learn about our services through frequently asked
                     </p>
-                    <button className="btn-inside-overlay">View FAQs</button>
+                    {
+                      /* Button with props, redirects to # on click */
+                      <Button
+                        text="View FAQs"
+                        onClick={() => (window.location.href = "#")}
+                      />
+                    }
                   </div>
                 </div>
               </div>
@@ -53,7 +60,13 @@ const RecommendedServicesContainer = () => {
                   <div className="fontz">
                     <h1 className="fh">Stay up to date</h1>
                     <p className="fp">Learn about our product updates</p>
-                    <button className="btn-inside-overlay">View FAQs</button>
+                    {
+                      /* Button with props, redirects to # on click */
+                      <Button
+                        text="View FAQs"
+                        onClick={() => (window.location.href = "#")}
+                      />
+                    }
                   </div>
                 </div>
               </div>

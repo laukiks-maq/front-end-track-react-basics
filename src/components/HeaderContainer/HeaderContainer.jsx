@@ -3,6 +3,7 @@
 import React from "react";
 import images2x from "../../assets/images/images@2x.png";
 import Group51 from "../../assets/images/Group 51.svg";
+import Button from "../Common/Button";
 
 const HeaderContainer = () => {
   return (
@@ -235,17 +236,13 @@ const HeaderContainer = () => {
                           elit. Fusce sit amet ultrices erat.
                         </div>
                         <div class="flexbox_custom">
-                          <button
-                            style={{
-                              backgroundColor: "#885ef0",
-                              border: "none",
-                              color: "white",
-                              padding: "10px",
-                              width: "100px",
-                            }}
-                          >
-                            Explore
-                          </button>
+                          {
+                            /* Button with props, redirects to # on click */
+                            <Button
+                              text="Explore"
+                              onClick={() => (window.location.href = "#")}
+                            />
+                          }
                         </div>
                       </div>
                     </div>
@@ -299,17 +296,13 @@ const HeaderContainer = () => {
                           elit. Fusce sit amet ultrices erat.
                         </div>
                         <div class="flexbox_custom">
-                          <button
-                            style={{
-                              backgroundColor: "#885ef0",
-                              border: "none",
-                              color: "white",
-                              padding: "10px",
-                              width: "100px",
-                            }}
-                          >
-                            Explore
-                          </button>
+                          {
+                            /* Button with props, redirects to # on click */
+                            <Button
+                              text="Explore"
+                              onClick={() => (window.location.href = "#")}
+                            />
+                          }
                         </div>
                       </div>
                     </div>
@@ -363,17 +356,13 @@ const HeaderContainer = () => {
                           elit. Fusce sit amet ultrices erat.
                         </div>
                         <div class="flexbox_custom">
-                          <button
-                            style={{
-                              backgroundColor: "#885ef0",
-                              border: "none",
-                              color: "white",
-                              padding: "10px",
-                              width: "100px",
-                            }}
-                          >
-                            Explore
-                          </button>
+                          {
+                            /* Button with props, redirects to # on click */
+                            <Button
+                              text="Explore"
+                              onClick={() => (window.location.href = "#")}
+                            />
+                          }
                         </div>
                       </div>
                     </div>
