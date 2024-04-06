@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Spinner from "../Common/Spinner";
+import ServicesCard from "../Common/ServicesCard";
 
 const DiscoverAvailableServicesContainer = () => {
   const date = new Date();
@@ -19,7 +20,7 @@ const DiscoverAvailableServicesContainer = () => {
   });
 
   const fetch = async () => {
-    setIsLoading(true);
+    // setIsLoading(true);
     try {
       // add 3 secs wait time to show the spinner
       await new Promise((resolve) => setTimeout(resolve, 3000));
@@ -54,148 +55,6 @@ const DiscoverAvailableServicesContainer = () => {
     fetch();
   }, []);
 
-  if (isLoading) {
-    return (
-      <>
-        <p className="bh">Discover available services</p>
-
-        <div
-          className="row rect40"
-          style={{
-            margin: "19px",
-            backgroundSize: "cover",
-            padding: "30px 26px",
-            borderRadius: "25px",
-            justifyContent: "space-evenly",
-          }}
-        >
-          <div className="col-md-3 bg-white rounded-3 mt-4 mb-4 pl-3 detail-card">
-            <h1
-              id="day"
-              className="display-4"
-              style={{
-                font: "normal normal normal 75px/90px Lato",
-                letterSpacing: "0px",
-                color: "#885ef0",
-                opacity: "1",
-                textAlign: "left",
-              }}
-            >
-              {date.getDate()}
-            </h1>
-            <h4
-              style={{
-                textAlign: "left",
-                font: "normal normal bold 16px/18px Lato",
-                letterSpacing: "0px",
-                color: "#425656",
-                opacity: "1",
-              }}
-            >
-              Today's DAY
-            </h4>
-            <p
-              id="dayText"
-              className="lead"
-              style={{
-                textAlign: "left",
-                font: "normal normal normal 16px/22px Lato",
-                letterSpacing: "0px",
-                color: "#425656",
-                opacity: "1",
-                marginTop: "20px",
-              }}
-            >
-              {<Spinner />}
-            </p>
-          </div>
-
-          <div className="col-md-3 bg-white rounded-3 mt-4 mb-4 pl-3 detail-card">
-            <h1
-              id="month"
-              className="display-4"
-              style={{
-                textAlign: "left",
-                font: "normal normal normal 75px/90px Lato",
-                letterSpacing: "0px",
-                color: "#885ef0",
-                opacity: "1",
-              }}
-            >
-              {date.getMonth()}
-            </h1>
-            <h4
-              style={{
-                textAlign: "left",
-                font: "normal normal bold 16px/18px Lato",
-                letterSpacing: "0px",
-                color: "#425656",
-                opacity: "1",
-              }}
-            >
-              Today's Month
-            </h4>
-            <p
-              id="monthText"
-              className="lead"
-              style={{
-                textAlign: "left",
-                font: "normal normal normal 16px/22px Lato",
-                letterSpacing: "0px",
-                color: "#425656",
-                opacity: "1",
-                marginTop: "20px",
-              }}
-            >
-              {<Spinner />}
-            </p>
-          </div>
-
-          <div className="col-md-3 bg-white rounded-3 mt-4 mb-4 pl-3 detail-card">
-            <h1
-              id="year"
-              className="display-4"
-              style={{
-                font: "normal normal normal 75px/90px Lato",
-                letterSpacing: "0px",
-                color: "#885ef0",
-                opacity: "1",
-                textAlign: "left",
-              }}
-            >
-              {date.getFullYear()}
-            </h1>
-            <h4
-              style={{
-                textAlign: "left",
-                font: "normal normal bold 16px/18px Lato",
-                letterSpacing: "0px",
-                color: "#425656",
-                opacity: "1",
-              }}
-            >
-              Today's YEAR
-            </h4>
-            <p
-              id="yearText"
-              className="lead"
-              style={{
-                textAlign: "left",
-                font: "normal normal normal 16px/22px Lato",
-                letterSpacing: "0px",
-                color: "#425656",
-                opacity: "1",
-                marginTop: "20px",
-              }}
-            >
-              {<Spinner />}
-            </p>
-          </div>
-        </div>
-      </>
-    );
-  }
-
   return (
     <>
       <p className="bh">Discover available services</p>
@@ -210,128 +69,26 @@ const DiscoverAvailableServicesContainer = () => {
           justifyContent: "space-evenly",
         }}
       >
-        <div className="col-md-3 bg-white rounded-3 mt-4 mb-4 pl-3 detail-card">
-          <h1
-            id="day"
-            className="display-4"
-            style={{
-              font: "normal normal normal 75px/90px Lato",
-              letterSpacing: "0px",
-              color: "#885ef0",
-              opacity: "1",
-              textAlign: "left",
-            }}
-          >
-            {date.getDate()}
-          </h1>
-          <h4
-            style={{
-              textAlign: "left",
-              font: "normal normal bold 16px/18px Lato",
-              letterSpacing: "0px",
-              color: "#425656",
-              opacity: "1",
-            }}
-          >
-            Today's DAY
-          </h4>
-          <p
-            id="dayText"
-            className="lead"
-            style={{
-              textAlign: "left",
-              font: "normal normal normal 16px/22px Lato",
-              letterSpacing: "0px",
-              color: "#425656",
-              opacity: "1",
-              marginTop: "20px",
-            }}
-          >
-            {text.dayText}
-          </p>
-        </div>
+        <ServicesCard
+          isLoading={isLoading}
+          title={date.getDate()}
+          subtitle="Today's DAY"
+          desc={text.dayText}
+        />
 
-        <div className="col-md-3 bg-white rounded-3 mt-4 mb-4 pl-3 detail-card">
-          <h1
-            id="month"
-            className="display-4"
-            style={{
-              textAlign: "left",
-              font: "normal normal normal 75px/90px Lato",
-              letterSpacing: "0px",
-              color: "#885ef0",
-              opacity: "1",
-            }}
-          >
-            {date.getMonth()}
-          </h1>
-          <h4
-            style={{
-              textAlign: "left",
-              font: "normal normal bold 16px/18px Lato",
-              letterSpacing: "0px",
-              color: "#425656",
-              opacity: "1",
-            }}
-          >
-            Today's Month
-          </h4>
-          <p
-            id="monthText"
-            className="lead"
-            style={{
-              textAlign: "left",
-              font: "normal normal normal 16px/22px Lato",
-              letterSpacing: "0px",
-              color: "#425656",
-              opacity: "1",
-              marginTop: "20px",
-            }}
-          >
-            {text.monthText}
-          </p>
-        </div>
+        <ServicesCard
+          isLoading={isLoading}
+          title={date.getMonth()}
+          subtitle="Today's Month"
+          desc={text.monthText}
+        />
 
-        <div className="col-md-3 bg-white rounded-3 mt-4 mb-4 pl-3 detail-card">
-          <h1
-            id="year"
-            className="display-4"
-            style={{
-              font: "normal normal normal 75px/90px Lato",
-              letterSpacing: "0px",
-              color: "#885ef0",
-              opacity: "1",
-              textAlign: "left",
-            }}
-          >
-            {date.getFullYear()}
-          </h1>
-          <h4
-            style={{
-              textAlign: "left",
-              font: "normal normal bold 16px/18px Lato",
-              letterSpacing: "0px",
-              color: "#425656",
-              opacity: "1",
-            }}
-          >
-            Today's YEAR
-          </h4>
-          <p
-            id="yearText"
-            className="lead"
-            style={{
-              textAlign: "left",
-              font: "normal normal normal 16px/22px Lato",
-              letterSpacing: "0px",
-              color: "#425656",
-              opacity: "1",
-              marginTop: "20px",
-            }}
-          >
-            {text.yearText}
-          </p>
-        </div>
+        <ServicesCard
+          isLoading={isLoading}
+          title={date.getFullYear()}
+          subtitle="Today's YEAR"
+          desc={text.yearText}
+        />
       </div>
     </>
   );
